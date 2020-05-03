@@ -1,0 +1,194 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Page-Enter" content="revealTrans(Duration=2.0,Transition=7)">
+    <style>
+        body, html, div, label, h1, h2, ul,li, a, input, button, header, section
+        {margin: 0; padding: 0; border: 0; outline: none;font-weight: initial}
+        ul,li{list-style-type:upper-roman;}
+        a {color: #000000;}
+        A:link {TEXT-DECORATION: none;}
+        A:visited {TEXT-DECORATION: none;}
+
+        body{
+            width: 100vw;
+            height: 100vh;
+            font-family: 'Segoe UI',sans-serif;
+        }
+        header{
+            width: 100%;
+            border-bottom: 1px solid black;
+        }
+        header>h1{
+            font-size: 30px;
+            line-height: 50px;
+            font-weight: 700;
+            text-align: center;
+        }
+        section{
+            width: 100%;
+        }
+        .home-box{
+            width: 100%;
+            height: calc(100vh - 51px);
+            display: flex;
+            /* align-items: center; */
+        }
+        .home-box .left{
+            width: 30%;
+            height: inherit;
+            border-right: 1px solid black;
+        }
+        .home-box .left ul{
+            width: 100%;
+        }
+        .home-box .left ul li{
+            margin-left: 40px;
+            font-size: 20px;
+            line-height: 55px;
+        }
+        .home-box .right{
+            width: 70%;
+        }
+        .home-box .right h1{
+            padding-left: 10px;
+            font-size: 25px;
+            line-height: 80px;
+        }
+        .home-box .right .check-box{
+            width: 100%;
+            font-size: 25px;
+            line-height: 35px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid black;
+        }
+        .home-box .right .check-box input[type=radio]{
+            margin-left: 10px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+        .home-box .right .check-box input[type=button]{
+            margin-left: 80px;
+            display: block;
+            border: 1px solid black;
+            text-align: center;
+            padding: 0 20px;
+            font-size: 25px;
+            line-height: 35px;
+            cursor: pointer;
+        }
+        .home-login {
+            width: 100%;
+            border-bottom: 1px dashed black;
+        }
+        .home-login label{
+            display: inline-block;
+            width: 120px;
+            margin-left: 10px;
+            font-size: 25px;
+            line-height: 50px;
+        }
+        .home-login input{
+            padding: 0 10px;
+            border: 1px solid black;
+            font-size: 25px;
+            line-height: 35px;
+        }
+        .click-btn h1{
+            display: inline-block;
+        }
+        .click-btn a{
+            display: inline-block;
+            margin-left: 10px;
+            border: 1px solid black;
+            text-align: center;
+            padding: 0 20px;
+            font-size: 25px;
+            line-height: 35px;
+        }
+    </style>
+    <title>home</title>
+</head>
+
+<body>
+    <header>
+        <h1>Homework Management</h1>
+    </header>
+
+    <section>
+        <div class="home-box">
+            <div class="left">
+                <ul id="adminiter" style="display: none;">
+                    <!-- <ul id="adminiter" class="display-none"> -->
+                    <li>Management Assignment lists</li>
+                    <li>Check files condition</li>
+                </ul>
+                <ul id="teacher" style="display: none;">
+                    <li>Create/Delete Assignment Lists</li>
+                    <li>Mark online</li>
+                    <li>Download homework</li>
+                    <li>Feedback</li>
+                </ul>
+                <ul id="student" style="display: none;">
+                    <li>Submit</li>
+                    <li>Check homework/download</li>
+                </ul>
+            </div>
+            
+            <div class="right">
+                <h1>Please choose the user's type</h1>
+                <div class="check-box">
+                    <div>
+                        <input type="radio" name="user" value="adminiter" checked onclick="changeType(this)">Adminiter<br>
+                        <input type="radio" name="user" value="teacher" onclick="changeType(this)">Teacher<br>
+                        <input type="radio" name="user" value="student" onclick="changeType(this)">Student<br>
+                    </div>
+                    
+                    <input type="button" name="confirm" value="confirm" onclick="confirmType()">
+                </div>
+
+                <div class="home-login" style="display: none;">
+                    <h1>Please Login in</h1>
+                    <label>Account</label>
+                    <input type="text" name="account"/><br>
+                    <label>Password</label>
+                    <input type="password" name="password"/><br>
+                </div>
+
+                <div class="click-btn" style="display: none;">
+                    <h1>Haven't register/forget your password?Click here.</h1>
+                    <a href="blank.html"> Click </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script text="type/javascript">
+        var userType = 'adminiter';
+        function changeType(e){
+            userType = e.value
+        }
+        function confirmType(){
+            var ele = document.getElementById(userType);
+            var eleLogin = document.getElementsByClassName("home-login")[0];
+            var eleClick = document.getElementsByClassName("click-btn")[0];
+            ele.style.display = 'block'
+            eleLogin.style.display = 'block'
+            eleClick.style.display = 'block'
+
+            var obox=ele.parentNode;
+            var lis=obox.children;
+            for(var i=0;i<lis.length;i++){
+                if(lis[i]!=ele){
+                    lis[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
